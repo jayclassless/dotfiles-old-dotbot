@@ -1,7 +1,3 @@
-[user]
-    name = Jason Simeone
-    email = jay@classless.net
-
 [core]
     excludesfile = ~/.gitignore_global
     editor = vi

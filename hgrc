@@ -1,5 +1,4 @@
 [ui]
-username = Jason Simeone
 ignore = ~/.hgignore_global
 
 [web]
@@ -20,7 +19,6 @@ hgext.purge =
 
 [auth]
 bitbucket.prefix = bitbucket.org
-bitbucket.username = jayclassless
 bitbucket.schemes = https http
 
 [pager]
