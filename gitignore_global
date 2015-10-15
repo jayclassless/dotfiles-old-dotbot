@@ -1,0 +1,8 @@
+*.swp
+*.swo
+*.pyc
+*.egg-info
+.DS_Store
+UserInterfaceState.xcuserstate
+*.suo
+

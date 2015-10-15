@@ -1,0 +1,15 @@
+# Add bin from dotfiles to path.
+export PATH=$HOME/.dotfiles/bin:${PATH}
+
+# Add local bin directory to path if not already there.
+if [ -d $HOME/bin ]; then
+    if ! echo $PATH | grep -q "$HOME/bin"; then
+        export PATH="$HOME/bin:$PATH"
+    fi
+fi
+
+# If we're on a Mac, put /usr/local/bin at the front so homebrew works
+if shell_is_osx; then
+    export PATH=/usr/local/bin:$PATH
+fi
+

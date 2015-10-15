@@ -1,0 +1,97 @@
+
+# History file settings
+export HISTCONTROL=ignoredups:ignorespace
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+shopt -s histappend
+
+# Check window size after each command and update LINES/COLUMNS
+shopt -s checkwinsize
+
+# Command prompt.
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    _bold="\[$(tput bold)\]"
+    _reset="\[$(tput sgr0)\]"
+    _red="\[$(tput setaf 1)\]"
+    _green="\[$(tput setaf 2)\]"
+    _yellow="\[$(tput setaf 3)\]"
+    _blue="\[$(tput setaf 4)\]"
+    _cyan="\[$(tput setaf 6)\]"
+    _white="\[$(tput setaf 7)\]"
+fi
+export VCPROMPT_FORMAT="%s[%b%a%m%u]"
+export VCPROMPT_TIMEOUT=1000
+BASE_PROMPT="$_red${debian_chroot:+($debian_chroot)}$_blue\u$_cyan@$_blue\h$_white:$_green\w$_white:$_yellow\$(vcprompt)$_white\$"
+if [ -e $HOME/.is_production ]; then
+    BASE_PROMPT="$_bold$_red!PROD!$_reset $BASE_PROMPT"
+fi
+export PS1="$BASE_PROMPT $_reset"
+unset debian_chroot BASE_PROMPT _bold _reset _blue _cyan _white _green _red _yellow
+
+# Set window title.
+case $TERM in
+    xterm*|rxvt*)
+        export PROMPT_COMMAND="echo -ne \"\033]0;${USER}@${HOSTNAME}\007\""
+        ;;
+    *)
+        ;;
+esac
+
+# Environment variables.
+export MAILCHECK=0
+export EDITOR=vim
+export PAGER=more
+export PYTHONSTARTUP=$HOME/.python/startup
+
+# Color support.
+if [ -x /usr/bin/dircolors ]; then
+    _colors="y"
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
+if shell_is_osx; then
+    _colors="y"
+    export CLICOLOR=1
+    export GIT_PAGER="less --RAW-CONTROL-CHARS --QUIT-AT-EOF --no-init"
+fi
+if [ ! -z "$_colors" ]; then
+    if shell_is_osx; then
+        alias ls='ls -G'
+    else
+        alias ls='ls --color=auto'
+    fi
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias zgrep='zgrep --color=auto'
+    unset _colors
+fi
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# Bash completion.
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
+# Give a heads up if there are screens running.
+if [ -n "`command -v screen`" ]; then
+    sc=`screen -list | grep "No Sockets"`
+    if [ -z "$sc" ]; then
+        screen -list
+    fi
+    unset sc
+fi
+
+# Aliases.
+alias l='ls -laF'
+alias screen="test $SSH_AUTH_SOCK && ln -sf \"$SSH_AUTH_SOCK\" \"$HOME/tmp/.screen-ssh-agent\"; screen"
+
+# Bring in a local bash configuration.
+if [ -f $HOME/.bash_local ]; then
+    . $HOME/.bash_local
+fi
+

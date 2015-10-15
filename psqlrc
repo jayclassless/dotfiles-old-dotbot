@@ -1,0 +1,11 @@
+\set QUIET 1
+
+\set PROMPT1 '[%n@%`hostname`:%~]%R%# '
+\set PROMPT2 '[%n@%`hostname`:%~]%R%# '
+
+\pset null '<<NULL>>'
+
+\set AUTOCOMMIT off
+
+\unset QUIET
+

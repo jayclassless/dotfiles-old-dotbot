@@ -1,0 +1,8 @@
+syntax: glob
+*.sw?
+*.pyc
+*.egg-info
+.DS_Store
+UserInterfaceState.xcuserstate
+*.suo
+

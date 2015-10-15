@@ -1,0 +1,64 @@
+- clean:
+    - '~'
+    - '~/.config'
+
+- link:
+    ~/.dotfiles:
+        relink: true
+        path: ''
+    ~/.gitconfig: 
+        relink: true
+        path: gitconfig
+    ~/.gitignore_global:
+        relink: true
+        path: gitignore_global
+    ~/.hgrc:
+        relink: true
+        path: hgrc
+    ~/.hgignore_global:
+        relink: true
+        path: hgignore_global
+    ~/.subversion:
+        relink: true
+        path: subversion/
+    ~/.screenrc:
+        relink: true
+        path: screenrc
+    ~/.psqlrc:
+        relink: true
+        path: psqlrc
+    ~/.multitailrc:
+        relink: true
+        path: multitailrc
+    ~/.vim:
+        relink: true
+        path: vim/
+    ~/.vimrc:
+        relink: true
+        path: vim/vimrc
+    ~/.bashrc:
+        relink: true
+        path: bash/bashrc_dispatch
+    ~/.bash_profile:
+        relink: true
+        path: bash/bashrc_dispatch
+    ~/.bash_login:
+        relink: true
+        path: bash/bashrc_dispatch
+    ~/.bash_logout:
+        relink: true
+        path: bash/bash_logout
+    ~/.fonts:
+        relink: true
+        path: fonts/
+    ~/.ssh/config:
+        relink: true
+        path: ssh/config
+
+- shell:
+    - mkdir -p ~/tmp/.vim
+    - mkdir -p ~/bin
+    - mkdir -p ~/dev
+    - touch ~/.screenrc_local
+    - git submodule update --init --recursive
+

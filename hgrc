@@ -1,0 +1,30 @@
+[ui]
+username = Jason Simeone
+ignore = ~/.hgignore_global
+
+[web]
+cacerts = /etc/ssl/certs/ca-certificates.crt
+
+[hostfingerprints]
+bitbucket.org = 46:de:34:e7:9b:18:cd:7f:ae:fd:8b:e3:bc:f4:1a:5e:38:d7:ac:24
+
+[extensions]
+bisect =
+children =
+color =
+pager =
+rebase =
+hgext.convert =
+hgext.fetch =
+hgext.purge =
+
+[auth]
+bitbucket.prefix = bitbucket.org
+bitbucket.username = jayclassless
+bitbucket.schemes = https http
+
+[pager]
+attend = annotate, cat, diff, export, glog, log, qdiff, status
+
+%include ~/.hgrc_local
+
