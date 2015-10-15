@@ -10,14 +10,14 @@ call pathogen#helptags()
 syntax on
 if has("gui_running")
     set t_Co=256
-    colorscheme badwolf
+    colorscheme mustang
 else
     if $TERM =~ '^xterm'
         set t_Co=256
-        colorscheme badwolf
+        colorscheme mustang
     elseif $TERM =~ '^screen-bce'
         set t_Co=256
-        colorscheme badwolf
+        colorscheme mustang
     elseif $TERM =~ '^rxvt'
         set t_Co=88
     elseif $TERM =~ '^linux'
@@ -120,7 +120,7 @@ set directory=~/tmp/.vim//
 
 "Plugin configs
 let g:vim_json_syntax_conceal = 0
-let g:airline_theme='badwolf'
+"let g:airline_theme='badwolf'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
