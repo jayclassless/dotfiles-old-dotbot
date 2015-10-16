@@ -31,3 +31,6 @@
 [submodule "vim/bundle/badwolf"]
 	path = vim/bundle/badwolf
 	url = https://github.com/sjl/badwolf
+[submodule "vim/bundle/vim-better-whitespace"]
+	path = vim/bundle/vim-better-whitespace
+	url = https://github.com/ntpeters/vim-better-whitespace
