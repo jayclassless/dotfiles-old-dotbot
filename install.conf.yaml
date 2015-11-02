@@ -6,7 +6,7 @@
     ~/.dotfiles:
         relink: true
         path: ''
-    ~/.gitconfig: 
+    ~/.gitconfig:
         relink: true
         path: gitconfig
     ~/.gitignore_global:
@@ -54,6 +54,11 @@
     ~/.ssh/config:
         relink: true
         path: ssh/config
+    ~/.python/startup:
+        relink: true
+        create: true
+        path: python/startup
+
 
 - shell:
     - mkdir -p ~/tmp/.vim

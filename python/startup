@@ -1,0 +1,21 @@
+import os, readline, rlcompleter, atexit
+
+# Keep a history across sessions.
+history_file = os.path.join(os.environ['HOME'], '.python', 'history')
+try:
+    readline.read_history_file(history_file)
+except IOError:
+    pass
+readline.parse_and_bind("tab: complete")
+try:
+    history_file_size = int(os.environ.get('HISTFILESIZE') \
+        or os.environ.get('HISTSIZE'))
+except:
+    history_file_size = 1000
+readline.set_history_length(history_file_size)
+atexit.register(readline.write_history_file, history_file)
+
+# Clean up the namespace.
+del os, readline, rlcompleter, atexit
+del history_file, history_file_size, __file__
+
