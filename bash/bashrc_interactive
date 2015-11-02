@@ -54,6 +54,7 @@ fi
 if shell_is_osx; then
     _colors="y"
     export CLICOLOR=1
+    export COLORTERM=1
     export GIT_PAGER="less --RAW-CONTROL-CHARS --QUIT-AT-EOF --no-init"
 fi
 if [ ! -z "$_colors" ]; then
