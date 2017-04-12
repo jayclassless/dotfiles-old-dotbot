@@ -57,6 +57,7 @@ set smarttab
 au FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
 au FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 au FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 "Searching options
 set hlsearch
