@@ -27,7 +27,7 @@ else
     endif
 endif
 if exists('+colorcolumn')
-    let &colorcolumn="80,".join(range(132,320),",")
+    let &colorcolumn="80,132"
     highlight ColorColumn ctermbg=235 guibg=#2c2d27
 endif
 set cursorline
