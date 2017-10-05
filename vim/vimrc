@@ -15,7 +15,7 @@ else
     if $TERM =~ '^xterm'
         set t_Co=256
         colorscheme mustang
-    elseif $TERM =~ '^screen-bce'
+    elseif $TERM =~ '^screen'
         set t_Co=256
         colorscheme mustang
     elseif $TERM =~ '^rxvt'
