@@ -13,3 +13,7 @@
 [include]
     path = ~/.gitconfig_local
 
+[alias]
+    in = !git fetch && git log ..origin/master
+    out = !git fetch && git log origin/master..
+
