@@ -1,79 +1,58 @@
 set nocompatible
-set encoding=utf-8
 
-"Pathogen
+" Boot Pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
+execute pathogen#infect()
+execute pathogen#helptags()
 
-"Colors and highlighting
-syntax on
-if has("gui_running")
-    set t_Co=256
-    colorscheme mustang
-else
-    if $TERM =~ '^xterm'
-        set t_Co=256
-        colorscheme mustang
-    elseif $TERM =~ '^screen'
-        set t_Co=256
-        colorscheme mustang
-    elseif $TERM =~ '^rxvt'
-        set t_Co=88
-    elseif $TERM =~ '^linux'
-        set t_Co=8
-    else
-        set t_Co=16
-    endif
-endif
-if exists('+colorcolumn')
-    let &colorcolumn="80,132"
-    highlight ColorColumn ctermbg=235 guibg=#2c2d27
-endif
+" Use F2 to toggle paste mode
+set pastetoggle=<F2>
+
+" Don't unselect block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" When pasting over a selection, don't copy the replaced text
+vnoremap p "_dP
+
+" New splits should open below/right of where we currently are
+set splitbelow
+set splitright
+
+" Highlight search results
+set hlsearch
+
+" Enable line numbering
+set number
+
+" Enable the mouse
+set mouse=a
+
+" Disable the auto-loading of outside changes; I want to be asked
+set noautoread
+
+" Disable folding
+set nofoldenable
+
+" Swap file location
+set directory=~/tmp/.vim//
+
+" Bells of any kind are annoying
+set visualbell t_vb=
+set noerrorbells
+
+" Theme/Colors
+set colorcolumn=80,132
 set cursorline
+colorscheme mustang
 hi CursorLine cterm=NONE
 
-"Mouse stuff
-if !has("gui_running")
-    if $TERM =~ '^xterm'
-        set mouse=a
-    elseif $TERM =~ '^screen-bce'
-        set mouse=a
-    endif
-endif
-
-"Line numbering
-set nu
-
-"Autoindent
-filetype plugin indent on
-
-"Tabs
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set smarttab
-au FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
-au FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
-au FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2
-au FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
-
-"Searching options
-set hlsearch
-set incsearch
-nnoremap <CR> :nohls<CR><CR>
-
-"Set window title to filename
-set title
-
-"Status bar options
-set ruler
-set showcmd
-set laststatus=2
-
-"Fonts
+" GVIM/MacVIM options
 if has("gui_running")
+    " Hide the toolbar
+    set guioptions-=T
+
+    " Set the font
     if has("gui_macvim")
         set guifont=Inconsolata:h12
     else
@@ -81,53 +60,20 @@ if has("gui_running")
     endif
 endif
 
-"Misc GUI options
-if has("gui_running")
-    set guioptions-=T
-endif
+" Language-specific options
+let g:polyglot_disabled = []  " Disable languages from vim-polygot
+let g:vim_json_syntax_conceal = 0  " Don't hide stuff from me
 
-"Stop it from beeping at us
-set visualbell t_vb=
-set noerrorbells
+" Tabs
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 
-"Don't unselect block after indent/outdent
-vnoremap < <gv
-vnoremap > >gv
+" Exceptions to my 'tabs are 4 spaces' rule
+au FileType html,javascript,json setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
-"Splitting options
-set splitbelow
-set splitright
-
-"Easy window navigation
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
-
-"Key rebinds
-nmap <F1> <nop>
-set pastetoggle=<F2>
-vnoremap p "_dP
-
-"Command aliases
-command WQ wq
-command Wq wq
-command W w
-command Q q
-
-"Fix delete/backspace
-set backspace=indent,eol,start
-
-"Directory settings
-set directory=~/tmp/.vim//
-
-"Plugin configs
-let g:vim_json_syntax_conceal = 0
-"let g:airline_theme='badwolf'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-
-"Local overrides
+" Local overrides
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
     source $LOCALFILE
