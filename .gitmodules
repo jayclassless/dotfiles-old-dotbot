@@ -22,3 +22,6 @@
 [submodule "vim/bundle/vim-mustang"]
 	path = vim/bundle/vim-mustang
 	url = https://github.com/cschlueter/vim-mustang
+[submodule "vim/bundle/ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
