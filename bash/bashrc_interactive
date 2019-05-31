@@ -84,9 +84,14 @@ if command -v screen &>/dev/null; then
     fi
     unset sc
 fi
+# Give a heads up if there are tmux sessions running.
+if command -v tmux &>/dev/null; then
+    tmux list-sessions 2>/dev/null
+fi
 
 # Aliases.
 alias l='ls -laF'
+alias lw='ls -CaF'
 alias screen="test $SSH_AUTH_SOCK && ln -sf \"$SSH_AUTH_SOCK\" \"$HOME/tmp/.screen-ssh-agent\"; screen"
 
 # Enable direnv if it's around.

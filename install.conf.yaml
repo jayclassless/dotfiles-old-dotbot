@@ -45,6 +45,8 @@
     ~/.python/startup:
         create: true
         path: python/startup
+    ~/.tmux.conf:
+        path: tmux.conf
 
 
 - shell:
