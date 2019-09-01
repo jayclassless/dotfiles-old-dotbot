@@ -54,5 +54,4 @@
     - mkdir -p ~/bin
     - mkdir -p ~/dev
     - touch ~/.screenrc_local
-    - git submodule update --init --recursive
 
