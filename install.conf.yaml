@@ -54,4 +54,5 @@
     - mkdir -p ~/bin
     - mkdir -p ~/dev
     - touch ~/.screenrc_local
+    - ./install_vcsinfo.sh -b ~/bin
 
