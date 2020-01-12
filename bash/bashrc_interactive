@@ -43,6 +43,7 @@ export MAILCHECK=0
 export EDITOR=vim
 export PAGER=more
 export PYTHONSTARTUP=$HOME/.python/startup
+export PIP_REQUIRE_VIRTUALENV=true
 
 # Color support.
 if [ -x /usr/bin/dircolors ]; then
@@ -68,7 +69,7 @@ if [ ! -z "$_colors" ]; then
     unset _colors
 fi
 
-# make less more friendly for non-text input files, see lesspipe(1)
+# Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # Bash completion.
@@ -93,6 +94,7 @@ fi
 alias l='ls -laF'
 alias lw='ls -CaF'
 alias screen="test $SSH_AUTH_SOCK && ln -sf \"$SSH_AUTH_SOCK\" \"$HOME/tmp/.screen-ssh-agent\"; screen"
+alias gpip='PIP_REQUIRE_VIRTUALENV="" pip "$@"'
 
 # Enable direnv if it's around.
 if command -v direnv &>/dev/null; then
