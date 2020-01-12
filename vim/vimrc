@@ -54,9 +54,9 @@ if has("gui_running")
 
     " Set the font
     if has("gui_macvim")
-        set guifont=Inconsolata:h12
+        set guifont=Inconsolata:h14
     else
-        set gfn=Inconsolata\ Medium\ 12
+        set gfn=Inconsolata\ Medium\ 14
     endif
 endif
 
