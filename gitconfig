@@ -10,10 +10,15 @@
 [push]
     default = simple
 
+[merge]
+    tool = vimdiff
+
 [include]
     path = ~/.gitconfig_local
 
 [alias]
+    ci = commit
+    st = status
     in = !git fetch && git log ..origin/master
     out = !git fetch && git log origin/master..
 
