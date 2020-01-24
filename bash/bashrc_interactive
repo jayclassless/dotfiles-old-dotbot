@@ -90,10 +90,17 @@ if command -v tmux &>/dev/null; then
     tmux list-sessions 2>/dev/null
 fi
 
+# Keep a predictably-named alias available for our SSH agent
+SOCK="/tmp/ssh-agent-$USER-screen"
+if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]; then
+    rm -f $SOCK
+    ln -sf $SSH_AUTH_SOCK $SOCK
+    export SSH_AUTH_SOCK=$SOCK
+fi
+
 # Aliases.
 alias l='ls -laF'
 alias lw='ls -CaF'
-alias screen="test $SSH_AUTH_SOCK && ln -sf \"$SSH_AUTH_SOCK\" \"$HOME/tmp/.screen-ssh-agent\"; screen"
 alias gpip='PIP_REQUIRE_VIRTUALENV="" pip "$@"'
 
 # Enable direnv if it's around.
