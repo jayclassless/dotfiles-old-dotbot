@@ -1,3 +1,10 @@
+[user]
+    name = Jason Simeone
+    email = jay@classless.net
+
+[github]
+    user = jayclassless
+
 [core]
     excludesfile = ~/.gitignore_global
     editor = vi
@@ -13,12 +20,17 @@
 [merge]
     tool = vimdiff
 
-[include]
-    path = ~/.gitconfig_local
+[mergetool]
+	keepBackup = false
 
 [alias]
+    co = checkout
     ci = commit
     st = status
     in = !git fetch && git log ..origin/master
     out = !git fetch && git log origin/master..
+    rollback = reset --soft HEAD~
+
+[include]
+    path = ~/.gitconfig_local
 
