@@ -47,6 +47,8 @@
         path: python/startup
     ~/.tmux.conf:
         path: tmux.conf
+    ~/.zshrc:
+        path: zshrc
 
 
 - shell:
