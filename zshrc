@@ -2,15 +2,22 @@
 shell_is_linux () { [[ "$OSTYPE" == *'linux'* ]] ; }
 shell_is_osx () { [[ "$OSTYPE" == *'darwin'* ]] ; }
 
-# History file settings
+# History settings
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=500
 setopt APPEND_HISTORY EXTENDED_HISTORY HIST_EXPIRE_DUPS_FIRST HIST_IGNORE_DUPS
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A'  up-line-or-beginning-search
+bindkey '^[OA'  up-line-or-beginning-search
+bindkey '^[[B'  down-line-or-beginning-search
+bindkey '^[OB'  down-line-or-beginning-search
 
 # Environment variables
 EDITOR=vim
-PAGER=more
+PAGER=less
 PYTHONSTARTUP=$HOME/.python/startup
 PIP_REQUIRE_VIRTUALENV=true
 
@@ -23,10 +30,6 @@ if type brew &>/dev/null; then
 fi
 autoload -Uz compinit
 compinit
-
-# Keybindings
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[~4" end-of-line
 
 # Color support
 CLICOLOR=1
@@ -71,6 +74,12 @@ fi
 alias l='ls -laF'
 alias lw='ls -CaF'
 alias gpip='PIP_REQUIRE_VIRTUALENV="" pip "$@"'
+
+# Enable pyenv if it's around.
+if type pyenv &>/dev/null; then
+    export PYENV_ROOT=/usr/local/var/pyenv
+    eval "$(pyenv init -)"
+fi
 
 # Enable direnv if it's around.
 if type direnv &>/dev/null; then
