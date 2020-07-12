@@ -1,3 +1,8 @@
+# Enable Powerlevel10k instant prompt.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Utilities
 shell_is_linux () { [[ "$OSTYPE" == *'linux'* ]] ; }
 shell_is_osx () { [[ "$OSTYPE" == *'darwin'* ]] ; }
@@ -41,13 +46,8 @@ fi
 alias grep='grep --color=auto'
 
 # Prompt
-setopt prompt_subst
-PROMPT="%F{blue}%n%F{cyan}@%F{blue}%m%F{white}%#%f "
-RPROMPT="%F{green}%~%f"
-if type vcsinfo &>/dev/null; then
-    VCSPROMPT='%F{yellow}$(vcsinfo)%f'
-    RPROMPT="$RPROMPT $VCSPROMPT"
-fi
+source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.zsh/p10k.zsh
 
 # Give a heads up if there are screens running.
 if type screen &>/dev/null; then
@@ -74,6 +74,9 @@ fi
 alias l='ls -laF'
 alias lw='ls -CaF'
 alias gpip='PIP_REQUIRE_VIRTUALENV="" pip "$@"'
+kctx () {
+    kubectl config use-context $1 && kubectl config set-context $1 --namespace=$2
+}
 
 # Enable pyenv if it's around.
 if type pyenv &>/dev/null; then
