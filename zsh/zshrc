@@ -29,12 +29,17 @@ PIP_REQUIRE_VIRTUALENV=true
 unsetopt beep
 bindkey -e
 
+# Paths
+if [ -d $HOME/bin ]; then
+    export PATH=$HOME/bin:$PATH
+fi
+
 # Completions
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 autoload -Uz compinit
-compinit
+compinit -u
 
 # Color support
 CLICOLOR=1
