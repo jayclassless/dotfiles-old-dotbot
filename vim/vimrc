@@ -71,7 +71,7 @@ set softtabstop=4
 set expandtab
 
 " Exceptions to my 'tabs are 4 spaces' rule
-au FileType html,javascript,json setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au FileType html,javascript,json,typescript,vue setlocal tabstop=2 shiftwidth=2 softtabstop=2
 au FileType go setlocal noexpandtab
 
 " Local overrides
