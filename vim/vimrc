@@ -74,6 +74,8 @@ set expandtab
 au FileType html,javascript,json,typescript,vue setlocal tabstop=2 shiftwidth=2 softtabstop=2
 au FileType go setlocal noexpandtab
 
+let g:ctrlp_max_files = 0
+
 " Local overrides
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
